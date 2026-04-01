@@ -8,6 +8,7 @@ import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusSpellComponents
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
@@ -36,7 +37,7 @@ public class ArcanusChestLootProvider extends SimpleFabricLootTableProvider {
 	}
 
 	@Override
-	public void generate(BiConsumer<ResourceLocation, LootTable.Builder> output) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
 		output.accept(ArcanusLootTables.WIZARD_TOWER_CHEST, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootTableReference.lootTableReference(BuiltInLootTables.IGLOO_CHEST))));
 		output.accept(ArcanusLootTables.WIZARD_TOWER_BOOKSHELF, LootTable.lootTable()
 			.withPool(LootPool.lootPool()

@@ -3,7 +3,7 @@ package dev.cammiescorner.arcanuscontinuum.common.blocks;
 import dev.cammiescorner.arcanuscontinuum.common.blocks.entities.SpatialRiftExitBlockEntity;
 import dev.cammiescorner.arcanuscontinuum.common.components.level.PocketDimensionComponent;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusBlocks;
-import dev.upcraft.sparkweave.api.util.scheduler.Tasks;
+import dev.upcraft.sparkweave.api.scheduler.Tasks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

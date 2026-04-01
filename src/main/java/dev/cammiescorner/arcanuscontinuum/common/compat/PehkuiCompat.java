@@ -3,9 +3,9 @@ package dev.cammiescorner.arcanuscontinuum.common.compat;
 import dev.cammiescorner.arcanuscontinuum.Arcanus;
 import dev.cammiescorner.arcanuscontinuum.common.components.entity.SizeComponent;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
-import dev.onyxstudios.cca.api.v3.entity.RespawnCopyStrategy;
 import net.minecraft.world.entity.Entity;
+import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
+import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy;
 import virtuoel.pehkui.api.ScaleRegistries;
 
 public class PehkuiCompat {

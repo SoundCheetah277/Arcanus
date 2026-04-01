@@ -1,34 +1,34 @@
 [versions]
 fabric_loom = "1.10.1"
 
-minecraft = "1.20.1"
+minecraft = "1.21.1"
 fabric_loader = "0.16.10"
 
 # https://parchmentmc.org/docs/getting-started
-parchment_minecraft = "1.20.1"
-parchment_mappings = "2023.09.03"
+parchment_minecraft = "1.21.1"
+parchment_mappings = "2024.11.17"
 
 jetbrains_annotations = "26.0.1"
-fabric_api = "0.92.3+1.20.1"
-cca = "5.2.3"
-sparkweave = "0.8.8"
-patchouli = "1.20.1-84-FABRIC"
+fabric_api = "0.102.0+1.21"
+cca = "6.1.2"
+sparkweave = "0.510.0"
+patchouli = "1.21.1-93-FABRIC"
 modonomicon = "1.77.5"
 reach_attr = "2.4.0"
-modmenu = "7.2.2"
-emi = "1.1.18+1.20.1"
+modmenu = "11.0.4"
+emi = "1.1.22+1.21.1"
 lazydfu = "0.1.3"
 resourceful_config = "2.1.2"
-firstperson = "Ca1G2C1x" # 2.4.8
-pehkui = "3.7.8+1.14.4-1.20.1"
+firstperson = "2.7.0" # Ca1G2C1x2.4.8
+pehkui = "3.8.3+1.14.4-1.21"
 kanos = "0.4.1"
-lambdynamiclights = "2.3.2+1.20.1"
+lambdynamiclights = "4.8.7+1.21.1"
 spruceui = "5.0.2+1.20"
-sodium = "mc1.20.1-0.5.3"
-iris = "1.6.11+1.20.1"
-explosive_enhancement = "1.3.2-1.20-1.20.4"
+#sodium = "mc1.21.1-0.6.13"
+#iris = "1.7.3+mc1.21"
+explosive_enhancement = "1.3.2-1.21-1.21.1"
 datasync = "0.9.0"
-trinkets = "3.7.1" # refmap doesnt work on 3.7.2
+trinkets = "3.10.0" # refmap doesnt work on 3.7.2
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -55,8 +55,8 @@ pehkui = { module = "maven.modrinth:pehkui", version.ref = "pehkui" }
 kanos = { module = "com.github.Virtuoel:KanosConfig", version.ref = "kanos" }
 lambdynamiclights = { module = "maven.modrinth:lambdynamiclights", version.ref = "lambdynamiclights" }
 spruceui = { module = "dev.lambdaurora:spruceui", version.ref = "spruceui" }
-sodium = { module = "maven.modrinth:sodium", version.ref = "sodium" }
-iris = { module = "maven.modrinth:iris", version.ref = "iris" }
+#sodium = { module = "maven.modrinth:sodium", version.ref = "sodium" }
+#iris = { module = "maven.modrinth:iris", version.ref = "iris" }
 explosive_enhancement = { module = "maven.modrinth:explosive-enhancement", version.ref = "explosive_enhancement" }
 trinkets = { module = "dev.emi:trinkets", version.ref = "trinkets" }
 

@@ -63,7 +63,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DyeableLeatherItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -166,7 +165,7 @@ public class ArcanusClient implements ClientModInitializer {
 			ArcanusItems.MAGE_PISTOL.get()
 		);
 
-		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? ((DyeableLeatherItem) stack.getItem()).getColor(stack) : -1,
+		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? ( stack.getItem()).getColor(stack) : -1,
 			ArcanusItems.WIZARD_HAT.get(),
 			ArcanusItems.WIZARD_ROBES.get(),
 			ArcanusItems.WIZARD_PANTS.get(),
@@ -384,10 +383,10 @@ public class ArcanusClient implements ClientModInitializer {
 				};
 				Vec3 normal = vert2.subtract(vert1).cross(vert3.subtract(vert1));
 
-				vertex.vertex(modelMatrix, (float) vert2.x(), (float) vert2.y(), (float) vert2.z()).color(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
-				vertex.vertex(modelMatrix, (float) vert4.x(), (float) vert4.y(), (float) vert4.z()).color(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
-				vertex.vertex(modelMatrix, (float) vert3.x(), (float) vert3.y(), (float) vert3.z()).color(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
-				vertex.vertex(modelMatrix, (float) vert1.x(), (float) vert1.y(), (float) vert1.z()).color(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
+				vertex.addVertex(modelMatrix, (float) vert2.x(), (float) vert2.y(), (float) vert2.z()).setColor(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
+				vertex.addVertex(modelMatrix, (float) vert4.x(), (float) vert4.y(), (float) vert4.z()).setColor(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
+				vertex.addVertex(modelMatrix, (float) vert3.x(), (float) vert3.y(), (float) vert3.z()).setColor(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
+				vertex.addVertex(modelMatrix, (float) vert1.x(), (float) vert1.y(), (float) vert1.z()).setColor(r, g, b, 0.6F).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normalMatrix, (float) normal.x(), (float) normal.y(), (float) normal.z()).endVertex();
 			}
 
 			while(recurse && random.nextFloat() < 0.2F) {
@@ -477,17 +476,17 @@ public class ArcanusClient implements ClientModInitializer {
 	}
 
 	private static void drawTexturedQuad(VertexConsumer vertex, Matrix4f matrix, Color color, int x0, int x1, int y0, int y1, float u0, float u1, float v0, float v1) {
-		vertex.vertex(matrix, x0, y1, 0).color(color.red(), color.green(), color.blue(), color.alpha()).uv(u0, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
-		vertex.vertex(matrix, x1, y1, 0).color(color.red(), color.green(), color.blue(), color.alpha()).uv(u1, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
-		vertex.vertex(matrix, x1, y0, 0).color(color.red(), color.green(), color.blue(), color.alpha()).uv(u1, v0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
-		vertex.vertex(matrix, x0, y0, 0).color(color.red(), color.green(), color.blue(), color.alpha()).uv(u0, v0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
+		vertex.addVertex(matrix, x0, y1, 0).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(u0, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
+		vertex.addVertex(matrix, x1, y1, 0).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(u1, v1).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
+		vertex.addVertex(matrix, x1, y0, 0).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(u1, v0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
+		vertex.addVertex(matrix, x0, y0, 0).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(u0, v0).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(LightTexture.FULL_BRIGHT).normal(0, 0, 1).endVertex();
 	}
 
 	public static void renderSide(Matrix4f matrix4f, VertexConsumer vertices, float x1, float x2, float y1, float y2, float z1, float z2, float z3, float z4, Color color, int light, int overlay, Matrix3f normal, Direction direction) {
-		vertices.vertex(matrix4f, x1, y1, z1).color(color.red(), color.green(), color.blue(), color.alpha()).uv(0, 1).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
-		vertices.vertex(matrix4f, x2, y1, z2).color(color.red(), color.green(), color.blue(), color.alpha()).uv(1, 1).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
-		vertices.vertex(matrix4f, x2, y2, z3).color(color.red(), color.green(), color.blue(), color.alpha()).uv(1, 0).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
-		vertices.vertex(matrix4f, x1, y2, z4).color(color.red(), color.green(), color.blue(), color.alpha()).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
+		vertices.addVertex(matrix4f, x1, y1, z1).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(0, 1).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
+		vertices.addVertex(matrix4f, x2, y1, z2).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(1, 1).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
+		vertices.addVertex(matrix4f, x2, y2, z3).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(1, 0).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
+		vertices.addVertex(matrix4f, x1, y2, z4).setColor(color.red(), color.green(), color.blue(), color.alpha()).uv(0, 0).overlayCoords(overlay).uv2(light).normal(normal, direction.getNormal().getX(), direction.getNormal().getY(), direction.getNormal().getZ()).endVertex();
 	}
 
 	private void renderOverlay(ResourceLocation texture, float opacity) {
@@ -504,10 +503,10 @@ public class ArcanusClient implements ClientModInitializer {
 		Tesselator tessellator = Tesselator.getInstance();
 		BufferBuilder bufferBuilder = tessellator.getBuilder();
 		bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX);
-		bufferBuilder.vertex(0.0, scaledHeight, -90.0).uv(0.0F, 1.0F).endVertex();
-		bufferBuilder.vertex(scaledWidth, scaledHeight, -90.0).uv(1.0F, 1.0F).endVertex();
-		bufferBuilder.vertex(scaledWidth, 0.0, -90.0).uv(1.0F, 0.0F).endVertex();
-		bufferBuilder.vertex(0.0, 0.0, -90.0).uv(0.0F, 0.0F).endVertex();
+		bufferBuilder.addVertex(0.0, scaledHeight, -90.0).uv(0.0F, 1.0F).endVertex();
+		bufferBuilder.addVertex(scaledWidth, scaledHeight, -90.0).uv(1.0F, 1.0F).endVertex();
+		bufferBuilder.addVertex(scaledWidth, 0.0, -90.0).uv(1.0F, 0.0F).endVertex();
+		bufferBuilder.addVertex(0.0, 0.0, -90.0).uv(0.0F, 0.0F).endVertex();
 		tessellator.end();
 		RenderSystem.depthMask(true);
 		RenderSystem.enableDepthTest();

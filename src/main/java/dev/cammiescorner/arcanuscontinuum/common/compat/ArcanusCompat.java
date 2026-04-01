@@ -1,6 +1,7 @@
 package dev.cammiescorner.arcanuscontinuum.common.compat;
 
-import dev.upcraft.sparkweave.api.util.modcompat.CompatHelper;
+
+import dev.upcraft.sparkweave.api.compat.CompatHelper;
 
 public class ArcanusCompat {
 

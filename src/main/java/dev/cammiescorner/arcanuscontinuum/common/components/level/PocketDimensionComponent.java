@@ -10,7 +10,6 @@ import dev.cammiescorner.arcanuscontinuum.common.data.ArcanusDimensions;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusBlocks;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
 import dev.upcraft.sparkweave.api.util.fakeplayer.FakePlayerHelper;
-import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
@@ -35,7 +34,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
-import net.minecraft.world.level.portal.PortalInfo;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.Scoreboard;
@@ -43,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class PocketDimensionComponent implements dev.onyxstudios.cca.api.v3.component.Component {
+public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.component.Component {
 
 	private static final int REPLACE_FLAGS = Block.UPDATE_CLIENTS | Block.UPDATE_SUPPRESS_DROPS;
 	private static final int DIMENSION_PADDING_Y = 8;

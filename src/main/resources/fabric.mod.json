@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "${mod_id}",
+  "id": "arcanuscontinuum",
   "version": "${version}",
   "name": "${mod_display_name}",
   "description": "${mod_description}",
@@ -20,7 +20,7 @@
     "discord": "${discord_url}"
   },
   "license": "${license_url}",
-  "icon": "assets/${mod_id}/icon.png",
+  "icon": "assets/arcanuscontinuum/icon.png",
   "environment": "*",
   "custom": {
     "mc-publish": {
@@ -104,9 +104,9 @@
     ]
   },
   "mixins": [
-    "${mod_id}.mixins.json"
+    "arcanuscontinuum.mixins.json"
   ],
-  "accessWidener": "${mod_id}.accesswidener",
+  "accessWidener": "arcanuscontinuum.accesswidener",
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
     "minecraft": "=${minecraft_version}",

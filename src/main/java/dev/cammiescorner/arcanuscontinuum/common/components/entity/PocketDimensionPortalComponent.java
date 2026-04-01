@@ -6,7 +6,7 @@ import dev.cammiescorner.arcanuscontinuum.common.components.level.PocketDimensio
 import dev.cammiescorner.arcanuscontinuum.common.entities.magic.PocketDimensionPortal;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusEntities;
 import dev.cammiescorner.arcanuscontinuum.common.util.ArcanusHelper;
-import dev.onyxstudios.cca.api.v3.component.Component;
+import org.ladysnake.cca.api.v3.component.Component;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;

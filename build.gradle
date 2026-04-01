@@ -8,7 +8,7 @@ def ENV = System.getenv()
 def NOW = new Date()
 def buildTime = ENV.BUILD_TIME ?: NOW.format('yy.MMdd.HHmm')
 
-def javaVersion = 17
+def javaVersion = 21
 
 // TODO increment when updating the compendium
 def book_version = 3
@@ -132,12 +132,12 @@ dependencies {
 	modCompileOnly libs.firstperson
 
 	// sodium
-	modCompileOnly libs.sodium
-	modLocalRuntime libs.sodium
+//	modCompileOnly libs.sodium
+//	modLocalRuntime libs.sodium
 
 	// iris
-	modCompileOnly libs.iris
-	modLocalRuntime libs.iris
+//	modCompileOnly libs.iris
+//	modLocalRuntime libs.iris
 
 	// explosive enhancement
 	modCompileOnly libs.explosive.enhancement

@@ -26,7 +26,7 @@ public final class ArcanusConfig {
 			public static double manaPerLevel = 0.05;
 
 			@ConfigEntry(id = "manaModifierOperation", type = EntryType.ENUM, translation = CONFIG_MANA_MODIFIER_OP)
-			public static AttributeModifier.Operation manaModifierOperation = AttributeModifier.Operation.MULTIPLY_BASE;
+			public static AttributeModifier.Operation manaModifierOperation = AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
 		}
 	}
 

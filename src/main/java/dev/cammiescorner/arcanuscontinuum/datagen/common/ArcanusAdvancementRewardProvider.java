@@ -4,6 +4,7 @@ import dev.cammiescorner.arcanuscontinuum.common.compat.PatchouliCompat;
 import dev.cammiescorner.arcanuscontinuum.common.data.ArcanusLootTables;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -22,8 +23,8 @@ public class ArcanusAdvancementRewardProvider extends SimpleFabricLootTableProvi
 	}
 
 	@Override
-	public void generate(BiConsumer<ResourceLocation, LootTable.Builder> output) {
+	public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> output) {
 		ItemStack guideBook = PatchouliCompat.getCompendiumArcanus();
-		output.accept(ArcanusLootTables.COMPENDIUM_ARCANUS, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(guideBook.getItem()).apply(SetNbtFunction.setTag(guideBook.getOrCreateTag())))));
+		output.accept(ArcanusLootTables.COMPENDIUM_ARCANUS, LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(guideBook.getItem()).apply(SetNbtFunction.setTag(guideBook.getComponents())))));
 	}
 }

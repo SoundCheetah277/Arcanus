@@ -3,7 +3,6 @@ package dev.cammiescorner.arcanuscontinuum.common.components.chunk;
 import dev.cammiescorner.arcanuscontinuum.Arcanus;
 import dev.cammiescorner.arcanuscontinuum.ArcanusConfig;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
-import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import dev.upcraft.sparkweave.api.SparkweaveApi;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -13,6 +12,7 @@ import net.minecraft.nbt.NbtUtils;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.chunk.ChunkAccess;
+import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 
 import java.util.Collections;
 import java.util.HashMap;

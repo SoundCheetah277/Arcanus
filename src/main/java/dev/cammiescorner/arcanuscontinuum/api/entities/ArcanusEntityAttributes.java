@@ -1,8 +1,8 @@
 package dev.cammiescorner.arcanuscontinuum.api.entities;
 
 import dev.cammiescorner.arcanuscontinuum.Arcanus;
+import dev.upcraft.sparkweave.api.platform.services.RegistryService;
 import dev.upcraft.sparkweave.api.registry.RegistryHandler;
-import dev.upcraft.sparkweave.api.registry.RegistryService;
 import dev.upcraft.sparkweave.api.registry.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.ai.attributes.Attribute;

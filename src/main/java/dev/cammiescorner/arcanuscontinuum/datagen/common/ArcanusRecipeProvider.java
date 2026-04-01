@@ -9,7 +9,6 @@ import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusItems;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusRecipes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.resource.conditions.v1.DefaultResourceConditions;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
@@ -35,7 +34,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('#', ItemTags.PLANKS)
 			.define('X', ItemTags.WOODEN_SLABS)
 			.unlockedBy("has_book", has(ItemTags.BOOKSHELF_BOOKS))
-			.save(exporter, Arcanus.id("chiseled_bookshelf"));
+			.save((RecipeOutput) exporter, Arcanus.id("chiseled_bookshelf"));
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ArcanusBlocks.ARCANE_WORKBENCH.get())
 			.pattern("CCC")
@@ -45,7 +44,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('A', Items.AMETHYST_SHARD)
 			.define('#', Blocks.CRAFTING_TABLE)
 			.unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ArcanusItems.BATTLE_MAGE_UPGRADE_SMITHING_TEMPLATE.get())
 			.pattern("#A#")
@@ -55,7 +54,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('S', Blocks.STONE)
 			.define('A', Items.AMETHYST_SHARD)
 			.unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ArcanusItems.CRYSTAL_STAFF.get())
 			.pattern("  A")
@@ -64,7 +63,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('A', Items.AMETHYST_SHARD)
 			.define('#', ItemTags.LOGS)
 			.unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ArcanusBlocks.MAGIC_DOOR.get())
 			.pattern("##")
@@ -73,7 +72,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('A', Items.AMETHYST_SHARD)
 			.define('#', ItemTags.PLANKS)
 			.unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArcanusItems.WIZARD_HAT.get())
 			.pattern(" # ")
@@ -82,7 +81,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('G', ConventionalItemTags.GOLD_INGOTS)
 			.define('#', Items.LEATHER)
 			.unlockedBy("has_gold_ingot", has(ConventionalItemTags.GOLD_INGOTS))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArcanusItems.WIZARD_ROBES.get())
 			.pattern("# #")
@@ -91,7 +90,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('G', ConventionalItemTags.GOLD_INGOTS)
 			.define('#', Items.LEATHER)
 			.unlockedBy("has_gold_ingot", has(ConventionalItemTags.GOLD_INGOTS))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArcanusItems.WIZARD_PANTS.get())
 			.pattern("G#G")
@@ -100,7 +99,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('G', ConventionalItemTags.GOLD_INGOTS)
 			.define('#', Items.LEATHER)
 			.unlockedBy("has_gold_ingot", has(ConventionalItemTags.GOLD_INGOTS))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ArcanusItems.WIZARD_BOOTS.get())
 			.pattern("G G")
@@ -108,7 +107,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.define('G', ConventionalItemTags.GOLD_INGOTS)
 			.define('#', Items.LEATHER)
 			.unlockedBy("has_gold_ingot", has(ConventionalItemTags.GOLD_INGOTS))
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ArcanusItems.SPELL_BOOK.get())
 			.requires(Items.BOOK)
@@ -116,14 +115,14 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 			.requires(Items.GLOW_INK_SAC)
 			.unlockedBy("has_glow_ink", has(Items.GLOW_INK_SAC))
 			.group(Arcanus.id("spell_book").toString())
-			.save(exporter);
+			.save((RecipeOutput) exporter);
 
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ArcanusItems.SPELL_BOOK.get())
 			.requires(Items.WRITABLE_BOOK)
 			.requires(Items.GLOW_INK_SAC)
 			.unlockedBy("has_glow_ink", has(Items.GLOW_INK_SAC))
 			.group(Arcanus.id("spell_book").toString())
-			.save(exporter, Arcanus.id("spell_book_from_writable_book"));
+			.save((RecipeOutput) exporter, Arcanus.id("spell_book_from_writable_book"));
 
 		battleMageSmithing(exporter, Items.DIAMOND_HELMET, RecipeCategory.COMBAT, ArcanusItems.BATTLE_MAGE_HELMET.get());
 		battleMageSmithing(exporter, Items.DIAMOND_CHESTPLATE, RecipeCategory.COMBAT, ArcanusItems.BATTLE_MAGE_CHESTPLATE.get());

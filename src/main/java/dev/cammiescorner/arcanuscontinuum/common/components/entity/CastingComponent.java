@@ -1,9 +1,9 @@
 package dev.cammiescorner.arcanuscontinuum.common.components.entity;
 
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
-import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
+import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
 
 public class CastingComponent implements AutoSyncedComponent {
 	private final LivingEntity entity;

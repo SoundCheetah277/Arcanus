@@ -11,7 +11,6 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.Nullable;
 import vazkii.patchouli.common.book.BookRegistry;
 import vazkii.patchouli.common.item.PatchouliItems;
-import vazkii.patchouli.common.recipe.ShapelessBookRecipe;
 
 import java.util.function.Consumer;
 
