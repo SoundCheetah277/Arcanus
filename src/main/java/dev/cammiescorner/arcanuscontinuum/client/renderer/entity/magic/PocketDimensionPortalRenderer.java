@@ -50,7 +50,7 @@ public class PocketDimensionPortalRenderer extends EntityRenderer<PocketDimensio
 		matrices.translate(0, 1.625, 0);
 		matrices.mulPose(Axis.ZP.rotationDegrees(180));
 		matrices.scale(scale, 1, scale);
-		portalModel.skybox.render(matrices, vertices.getBuffer(RenderType.entitySolid(PORTAL_TEXTURE)), light, OverlayTexture.NO_OVERLAY, 1f, 1f, 1f, 1f);
+		portalModel.skybox.render(matrices, vertices.getBuffer(RenderType.entitySolid(PORTAL_TEXTURE)), light, OverlayTexture.NO_OVERLAY);
 		matrices.popPose();
 
 		matrices.pushPose();

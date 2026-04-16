@@ -38,7 +38,7 @@ public class MagicProjectileModel extends EntityModel<Missile> {
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		base.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		base.render(matrices, vertexConsumer, light, overlay);
 	}
 
 	@Override

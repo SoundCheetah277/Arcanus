@@ -67,17 +67,17 @@ public class SpellPatternFeatureRenderer<T extends Player, M extends EntityModel
 
 		matrices.pushPose();
 		matrices.translate(0, 0, Mth.sin((player.tickCount + player.getId() + client.getFrameTime()) / (Mth.PI * 2)) * 0.05F);
-		model.first.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, color.redF(), color.greenF(), color.blueF(), color.alphaF());
+		model.first.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
 		matrices.popPose();
 
 		matrices.pushPose();
 		matrices.translate(0, 0, Mth.cos((player.tickCount + player.getId() + client.getFrameTime()) / (Mth.PI * 2)) * 0.05F);
-		model.second.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, color.redF(), color.greenF(), color.blueF(), color.alphaF());
+		model.second.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
 		matrices.popPose();
 
 		matrices.pushPose();
 		matrices.translate(0, 0, Mth.sin((player.tickCount + player.getId() + client.getFrameTime()) / (Mth.PI * 2)) * 0.05F);
-		model.third.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, color.redF(), color.greenF(), color.blueF(), color.alphaF());
+		model.third.render(matrices, vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY);
 		matrices.popPose();
 
 		matrices.popPose();

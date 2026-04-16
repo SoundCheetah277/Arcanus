@@ -37,7 +37,7 @@ public class ManaWingsFeatureRenderer<T extends LivingEntity, M extends EntityMo
 			getParentModel().copyPropertiesTo(model);
 			model.setupAnim(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
 			VertexConsumer layer = vertices.getBuffer(ArcanusClient.getMagicCircles(TEXTURE));
-			model.renderToBuffer(matrices, layer, light, OverlayTexture.NO_OVERLAY, color.redF(), color.greenF(), color.blueF(), 1.0F);
+			model.renderToBuffer(matrices, layer, light, OverlayTexture.NO_OVERLAY);
 			matrices.popPose();
 		}
 	}

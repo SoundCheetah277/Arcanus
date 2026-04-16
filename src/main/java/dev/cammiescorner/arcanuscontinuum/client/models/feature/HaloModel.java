@@ -44,6 +44,6 @@ public class HaloModel<T extends Player> extends HumanoidModel<T> {
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		halo.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		halo.render(matrices, vertexConsumer, light, overlay);
 	}
 }

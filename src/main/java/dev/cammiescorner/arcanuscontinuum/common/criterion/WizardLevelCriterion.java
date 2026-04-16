@@ -1,8 +1,10 @@
 package dev.cammiescorner.arcanuscontinuum.common.criterion;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSerializationContext;
 import dev.cammiescorner.arcanuscontinuum.Arcanus;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
+import dev.lambdaurora.lambdynlights.shadow.nightconfig.core.serde.DeserializerContext;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -13,7 +15,7 @@ public class WizardLevelCriterion extends SimpleCriterionTrigger<WizardLevelCrit
 	public static final ResourceLocation ID = Arcanus.id("wizard_level");
 
 	@Override
-	protected TriggerInstance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializationContext deserializationContext) {
+	protected TriggerInstance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializerContext deserializationContext) {
 		int level = GsonHelper.getAsInt(json, "level");
 		return new TriggerInstance(predicate, level);
 	}
@@ -41,7 +43,7 @@ public class WizardLevelCriterion extends SimpleCriterionTrigger<WizardLevelCrit
 		}
 
 		@Override
-		public JsonObject serializeToJson(SerializationContext context) {
+		public JsonObject serializeToJson(JsonSerializationContext context) {
 			JsonObject json = super.serializeToJson(context);
 			json.addProperty("level", level);
 			return json;

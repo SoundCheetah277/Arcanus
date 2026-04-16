@@ -60,13 +60,13 @@ public class OpossumModel extends EntityModel<Opossum> {
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		head.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		body.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		leftForeleg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		rightForeleg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		leftHindleg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		rightHindleg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		tailBase.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		head.render(matrices, vertexConsumer, light, overlay);
+		body.render(matrices, vertexConsumer, light, overlay);
+		leftForeleg.render(matrices, vertexConsumer, light, overlay);
+		rightForeleg.render(matrices, vertexConsumer, light, overlay);
+		leftHindleg.render(matrices, vertexConsumer, light, overlay);
+		rightHindleg.render(matrices, vertexConsumer, light, overlay);
+		tailBase.render(matrices, vertexConsumer, light, overlay);
 	}
 
 	@Override

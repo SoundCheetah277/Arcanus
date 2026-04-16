@@ -39,6 +39,6 @@ public class PocketDimensionPortalModel extends EntityModel<Entity> {
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		box.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		box.render(matrices, vertexConsumer, light, overlay);
 	}
 }

@@ -29,12 +29,12 @@ public class ArcanusEnglishLanguageProvider extends FabricLanguageProvider {
 	private final CompletableFuture<HolderLookup.Provider> registriesFuture;
 
 	public ArcanusEnglishLanguageProvider(FabricDataOutput dataOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-		super(dataOutput);
+		super(dataOutput, registriesFuture);
 		this.registriesFuture = registriesFuture;
 	}
 
 	@Override
-	public void generateTranslations(TranslationBuilder builder) {
+	public void generateTranslations(HolderLookup.Provider registryLookup,TranslationBuilder builder) {
 		builder.add(ArcanusItems.ITEM_GROUP.getRegistryKey(), "Arcanus: Continuum");
 		builder.add(ArcanusItems.WOODEN_STAFF.get(), "Wooden Staff");
 		builder.add(ArcanusItems.CRYSTAL_STAFF.get(), "Crystal Staff");

@@ -1,6 +1,7 @@
 package dev.cammiescorner.arcanuscontinuum.common.structures;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import dev.cammiescorner.arcanuscontinuum.common.blocks.entities.DummyBookshelfBlockEntity;
 import dev.cammiescorner.arcanuscontinuum.common.data.ArcanusLootTables;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusBlocks;
@@ -16,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class WizardTowerProcessor extends StructureProcessor {
 	public static final WizardTowerProcessor INSTANCE = new WizardTowerProcessor();
-	public static final Codec<WizardTowerProcessor> CODEC = Codec.unit(() -> WizardTowerProcessor.INSTANCE);
+	public static final MapCodec<WizardTowerProcessor> CODEC = Codec.unit(() -> WizardTowerProcessor.INSTANCE);
 
 	@Nullable
 	@Override

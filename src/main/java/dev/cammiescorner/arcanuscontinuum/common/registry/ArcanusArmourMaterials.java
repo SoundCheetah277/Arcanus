@@ -21,13 +21,13 @@ public enum ArcanusArmourMaterials implements StringRepresentable, ArmorMaterial
 		map.put(ArmorItem.Type.LEGGINGS, 4);
 		map.put(ArmorItem.Type.CHESTPLATE, 5);
 		map.put(ArmorItem.Type.HELMET, 2);
-	}), 25, SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.LEATHER)),
+	}), 25, (SoundEvent) SoundEvents.ARMOR_EQUIP_LEATHER, 0f, 0f, () -> Ingredient.of(Items.LEATHER)),
 	BATTLE_MAGE("battle_mage", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
 		map.put(ArmorItem.Type.BOOTS, 2);
 		map.put(ArmorItem.Type.LEGGINGS, 7);
 		map.put(ArmorItem.Type.CHESTPLATE, 8);
 		map.put(ArmorItem.Type.HELMET, 3);
-	}), 25, SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Items.AMETHYST_SHARD));
+	}), 25, (SoundEvent) SoundEvents.ARMOR_EQUIP_IRON, 0f, 0f, () -> Ingredient.of(Items.AMETHYST_SHARD));
 
 	public static final Codec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
 	private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY_VALUES = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {

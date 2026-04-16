@@ -34,6 +34,6 @@ public class MagicRuneModel extends EntityModel<MagicRune> {
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		rune.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		rune.render(matrices, vertexConsumer, light, overlay);
 	}
 }

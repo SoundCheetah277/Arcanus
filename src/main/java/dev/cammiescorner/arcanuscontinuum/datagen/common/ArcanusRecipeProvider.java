@@ -26,7 +26,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 	}
 
 	@Override
-	public void buildRecipes(Consumer<FinishedRecipe> exporter) {
+	public void buildRecipes(RecipeOutput exporter) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.CHISELED_BOOKSHELF)
 			.pattern("###")
 			.pattern("XXX")
@@ -134,7 +134,7 @@ public class ArcanusRecipeProvider extends FabricRecipeProvider {
 		ShapelessBookRecipeBuilder.book(RecipeCategory.MISC, Arcanus.id("compendium_arcanus")).requires(Items.BOOK).requires(Items.AMETHYST_SHARD, 3).unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD)).save(withConditions(exporter, DefaultResourceConditions.allModsLoaded(ArcanusCompat.PATCHOULI.modid())));
 	}
 
-	public static void battleMageSmithing(Consumer<FinishedRecipe> finishedRecipeConsumer, Item ingredientItem, RecipeCategory category, Item resultItem) {
+	public static void battleMageSmithing(RecipeOutput finishedRecipeConsumer, Item ingredientItem, RecipeCategory category, Item resultItem) {
 		SmithingTransformRecipeBuilder.smithing(Ingredient.of(ArcanusItems.BATTLE_MAGE_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(ingredientItem), Ingredient.of(Items.AMETHYST_SHARD), category, resultItem).unlocks("has_amethyst", has(Items.AMETHYST_SHARD)).save(finishedRecipeConsumer, getItemName(resultItem) + "_smithing");
 	}
 }

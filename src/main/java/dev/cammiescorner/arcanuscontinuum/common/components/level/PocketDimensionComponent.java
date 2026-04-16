@@ -9,9 +9,11 @@ import dev.cammiescorner.arcanuscontinuum.common.blocks.SpatialRiftExitEdgeBlock
 import dev.cammiescorner.arcanuscontinuum.common.data.ArcanusDimensions;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusBlocks;
 import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusComponents;
-import dev.upcraft.sparkweave.api.util.fakeplayer.FakePlayerHelper;
+import dev.cammiescorner.arcanuscontinuum.common.util.TranslationKeys;
+import net.fabricmc.fabric.api.entity.FakePlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -69,7 +71,7 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 	}
 
 	@Override
-	public void readFromNbt(CompoundTag tag) {
+	public void readFromNbt(CompoundTag tag, HolderLookup.Provider registryLookup) {
 		ListTag plotNbtList = tag.getList("PlotMap", Tag.TAG_COMPOUND);
 		ListTag exitNbtList = tag.getList("ExitSpots", Tag.TAG_COMPOUND);
 
@@ -85,12 +87,12 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 
 		for(int i = 0; i < exitNbtList.size(); i++) {
 			CompoundTag entry = exitNbtList.getCompound(i);
-			exitSpot.put(entry.getUUID("EntityId"), new Tuple<>(ResourceKey.create(Registries.DIMENSION, new ResourceLocation(entry.getString("WorldKey"))), new Vec3(entry.getDouble("X"), entry.getDouble("Y"), entry.getDouble("Z"))));
+			exitSpot.put(entry.getUUID("EntityId"), new Tuple<>(ResourceKey.create(Registries.DIMENSION, ResourceLocation.parse(entry.getString("WorldKey"))), new Vec3(entry.getDouble("X"), entry.getDouble("Y"), entry.getDouble("Z"))));
 		}
 	}
 
 	@Override
-	public void writeToNbt(CompoundTag tag) {
+	public void writeToNbt(CompoundTag tag, HolderLookup.Provider registryLookup) {
 		ListTag plotNbtList = new ListTag();
 		ListTag exitNbtList = new ListTag();
 
@@ -138,13 +140,13 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 				}
 
 				var bottomCenterPos = Vec3.atBottomCenterOf(plot.getBounds().getCenter().atY(plot.min().getY() + 1));
-				FabricDimensions.teleport(entity, pocketDim, new PortalInfo(bottomCenterPos, Vec3.ZERO, entity.getYRot(), entity.getXRot()));
+				entity.teleportTo(pocketDim, bottomCenterPos.x(), bottomCenterPos.y(), bottomCenterPos.z(), Set.of(), entity.getYRot(), entity.getXRot());
 			}
 		}
 	}
 
 	public boolean teleportOutOfPocketDimension(Entity entity) {
-		if((entity instanceof Player player && FakePlayerHelper.isFakePlayer(player)) || entity.level().dimension() != ArcanusDimensions.POCKET_DIMENSION)
+		if((entity instanceof Player player && player instanceof FakePlayer || entity.level().dimension() != ArcanusDimensions.POCKET_DIMENSION))
 			return false;
 
 		UUID ownerId = existingPlots.values().stream().filter(plot -> entity.getBoundingBox().intersects(AABB.of(plot.getBounds()))).map(PocketDimensionPlot::ownerId).findFirst().orElse(null);
@@ -163,7 +165,7 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 					targetPos = Vec3.atBottomCenterOf(targetWorld.getSharedSpawnPos());
 				}
 
-				FabricDimensions.teleport(entity, targetWorld, new PortalInfo(targetPos, Vec3.ZERO, entity.getYRot(), entity.getXRot()));
+				entity.teleportTo(targetWorld, targetPos.x(), targetPos.y(), targetPos.z(), Set.of(), entity.getYRot(), entity.getXRot());
 				return true;
 			}
 		}
@@ -182,7 +184,8 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 				angle = entity.getYRot();
 			}
 
-			FabricDimensions.teleport(entity, world, new PortalInfo(Vec3.atBottomCenterOf(spawnPos), Vec3.ZERO, angle, entity.getXRot()));
+			Vec3 targetPos = Vec3.atBottomCenterOf(spawnPos);
+			entity.teleportTo(world, targetPos.x(), targetPos.y(), targetPos.z(), Set.of(), angle, entity.getXRot());
 		}
 
 		Arcanus.LOGGER.warn("Unable to teleport entity out of pocket dimension: {} ({})", entity.getScoreboardName(), entity.getUUID());
@@ -272,15 +275,16 @@ public class PocketDimensionComponent implements org.ladysnake.cca.api.v3.compon
 
 		if(regenerateType.clearInterior()) {
 			pocketDim.getEntitiesOfClass(Entity.class, AABB.of(plot.getBounds())).forEach(entity -> {
-				if(!(entity instanceof ServerPlayer player) || FakePlayerHelper.isFakePlayer(player)) {
+				if(!(entity instanceof ServerPlayer player) || player instanceof FakePlayer) {
 					entity.discard();
 					return;
 				}
 
-				var overworld = server.overworld();
+				ServerLevel overworld = server.overworld();
+				Vec3 targetPos = Vec3.atBottomCenterOf(overworld.getSharedSpawnPos());
 
-				FabricDimensions.teleport(player, overworld, new PortalInfo(Vec3.atBottomCenterOf(overworld.getSharedSpawnPos()), Vec3.ZERO, overworld.getSharedSpawnAngle(), 0.0F));
-				player.sendSystemMessage(Component.translatable("command.arcanuscontinuum.pocket_dimension.regenerate.warn.teleport"));
+				entity.teleportTo(overworld, targetPos.x(), targetPos.y(), targetPos.z(), Set.of(), overworld.getSharedSpawnAngle(), 0f);
+				player.sendSystemMessage(Component.translatable(TranslationKeys.COMMAND_REGEN_POCKET_TELEPORT));
 			});
 		}
 

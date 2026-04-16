@@ -34,7 +34,7 @@ public class CounterFeatureRenderer<T extends LivingEntity, M extends EntityMode
 
 			matrices.pushPose();
 			matrices.scale(1.1F, 1.1F, 1.1F);
-			model.renderToBuffer(matrices, verticies.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), light, OverlayTexture.NO_OVERLAY, r, g, b, 1.0F);
+			model.renderToBuffer(matrices, verticies.getBuffer(ArcanusClient.getMagicCircles(TEXTURE)), light, OverlayTexture.NO_OVERLAY);
 			matrices.popPose();
 		}
 	}

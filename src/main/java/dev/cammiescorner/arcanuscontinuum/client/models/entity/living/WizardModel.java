@@ -64,12 +64,12 @@ public class WizardModel extends EntityModel<Wizard> implements ArmedModel, Head
 
 	@Override
 	public void renderToBuffer(PoseStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
-		head.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		leftArm.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		rightArm.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		body.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		leftLeg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
-		rightLeg.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+		head.render(matrices, vertexConsumer, light, overlay);
+		leftArm.render(matrices, vertexConsumer, light, overlay);
+		rightArm.render(matrices, vertexConsumer, light, overlay);
+		body.render(matrices, vertexConsumer, light, overlay);
+		leftLeg.render(matrices, vertexConsumer, light, overlay);
+		rightLeg.render(matrices, vertexConsumer, light, overlay);
 	}
 
 	@Override

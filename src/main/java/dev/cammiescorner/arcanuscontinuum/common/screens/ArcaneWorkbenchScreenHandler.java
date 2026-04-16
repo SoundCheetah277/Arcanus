@@ -19,6 +19,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
@@ -306,7 +307,7 @@ public class ArcaneWorkbenchScreenHandler extends RecipeBookMenu<TransientCrafti
 	}
 
 	@Override
-	public boolean recipeMatches(Recipe<? super TransientCraftingContainer> recipe) {
+	public boolean recipeMatches(RecipeHolder recipe) {
 		if(mode == WorkbenchMode.SPELLBINDING)
 			return recipe.matches(input, player.level());
 		else
