@@ -9,24 +9,27 @@ import dev.cammiescorner.arcanuscontinuum.common.registry.ArcanusItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.PlayerTrigger;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class ArcanusAdvancementProvider extends FabricAdvancementProvider {
 
-	public ArcanusAdvancementProvider(FabricDataOutput output) {
-		super(output);
+	public ArcanusAdvancementProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registryLookup) {
+		super(output, registryLookup);
 	}
 
 	@Override
-	public void generateAdvancement(Consumer<Advancement> writer) {
+	public void generateAdvancement(HolderLookup.Provider registryLookup, Consumer<AdvancementHolder> writer) {
 		Advancement.Builder.recipeAdvancement().addCriterion("tick", PlayerTrigger.TriggerInstance.tick()).rewards(AdvancementRewards.Builder.loot(ArcanusLootTables.COMPENDIUM_ARCANUS)).save(writer, ArcanusAdvancements.GRANT_COMPENDIUM_ARCANUS);
 
 		var arcaneRoot = Advancement.Builder.advancement().display(ArcanusItems.CRYSTAL_STAFF.get(), Component.translatable("advancements.arcanuscontinuum.arcane.root.title"), Component.translatable("advancements.arcanuscontinuum.arcane.root.description"), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"), FrameType.TASK, false, false, false).addCriterion("tick", PlayerTrigger.TriggerInstance.tick()).save(writer, ArcanusAdvancements.ARCANE_ROOT);

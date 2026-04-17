@@ -12,8 +12,9 @@ import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 
 import java.util.ArrayList;
@@ -33,16 +34,17 @@ public class ArcanusTradeOffers {
 			new SellItemFactory(ArcanusItems.DIVINATION_STAFF.get(), 5, 1, 100, 3),
 			new SellItemFactory(ArcanusItems.CRESCENT_STAFF.get(), 5, 1, 100, 3),
 			new SellItemFactory(ArcanusItems.ANCIENT_STAFF.get(), 5, 1, 100, 3),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.INVISIBILITY), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.NIGHT_VISION), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.LEAPING), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.FIRE_RESISTANCE), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.SWIFTNESS), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER_BREATHING), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.LONG_REGENERATION), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH), 10, 100, 5),
-			new SellItemFactory(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.SLOW_FALLING), 10, 100, 5)
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.INVISIBILITY), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.NIGHT_VISION), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.LEAPING), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.FIRE_RESISTANCE), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.SWIFTNESS), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.WATER_BREATHING), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.LONG_REGENERATION), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.STRENGTH), 10, 100, 5),
+			new SellItemFactory(PotionContents.createItemStack(Items.POTION, Potions.SLOW_FALLING), 10, 100, 5)
 		);
+
 		ArcanusCompat.PATCHOULI.ifEnabled(() -> () -> factories.add(0, new SellItemFactory(PatchouliCompat.getCompendiumArcanus(), 2, 100, 1)));
 
 		return new Int2ObjectOpenHashMap<>(
@@ -74,7 +76,7 @@ public class ArcanusTradeOffers {
 
 		@Override
 		public MerchantOffer getOffer(Entity entity, RandomSource random) {
-			return new MerchantOffer(new ItemStack(Items.AMETHYST_SHARD, price), sell, maxUses, experience, 0.05F);
+			return new MerchantOffer(new ItemCost(Items.AMETHYST_SHARD, price), sell, maxUses, experience, 0.05f);
 		}
 	}
 }
